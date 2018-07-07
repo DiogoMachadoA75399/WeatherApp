@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
-import {fetchError, dataIsLoading, weatherData} from './weather';
+import { fetchError, dataIsLoading, weatherData, location } from './weather';
 
 export default combineReducers({
     fetchError,
     dataIsLoading,
-    weatherData
+    weatherData,
+    location,
 })

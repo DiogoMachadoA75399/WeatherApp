@@ -22,6 +22,13 @@ export function fetchSuccess(data) {
     }
 }
 
+export function changeLocation(location) {
+    return {
+        type: 'CHANGE_LOCATION',
+        location,
+    }
+}
+
 export function weatherFetchData(city, country) {
     return (dispatch) => {
         dispatch(dataIsLoading(true));

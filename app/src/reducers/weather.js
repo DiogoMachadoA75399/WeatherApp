@@ -16,6 +16,15 @@ export function dataIsLoading(state = false, action) {
     }
 }
 
+export function location(state = { city: '', country: '' }, action) {
+    switch (action.type) {
+        case 'CHANGE_LOCATION':
+            return action.location;
+        default:
+            return state;
+    }
+}
+
 export function weatherData(state = [], action) {
     switch (action.type) {
         case 'FETCH_SUCCESS':

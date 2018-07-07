@@ -19,7 +19,7 @@ export const getDailyForecasts = (days, locationKey, language = 'en-US', metric 
                 DescriptionDay: dailyForecast.Day.IconPhrase,
                 DescriptionNight: dailyForecast.Night.IconPhrase,
                 MaximumTemperature: dailyForecast.Temperature.Maximum.Value,
-                MinimumTemperature: dailyForecast.Temperature.Minimum.Value
+                MinimumTemperature: dailyForecast.Temperature.Minimum.Value,
             }))
         });
 }
