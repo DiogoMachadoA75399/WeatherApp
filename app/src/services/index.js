@@ -6,11 +6,11 @@ const BASE_URL = 'http://dataservice.accuweather.com/';
 const FORECASTS_URL = BASE_URL + 'forecasts/v1/';
 
 
-export const getDailyForecasts = (days, locationKey, language = 'en-US', metric = true) => {
+export const getDailyForecasts = (days, locationKey, language = 'en-US', metric = true, details = true) => {
     const url = `${FORECASTS_URL}/daily/${days}day/${locationKey}`;
     return axios
         .get(url, {
-            params: { apikey: API_KEY, metric, language },
+            params: { apikey: API_KEY, metric, language, details},
         })
         .then(response => {
             let dailyForecasts = response.data.DailyForecasts;
@@ -20,6 +20,8 @@ export const getDailyForecasts = (days, locationKey, language = 'en-US', metric 
                 DescriptionNight: dailyForecast.Night.IconPhrase,
                 MaximumTemperature: dailyForecast.Temperature.Maximum.Value,
                 MinimumTemperature: dailyForecast.Temperature.Minimum.Value,
+                IconDay: dailyForecast.Day.Icon,
+                IconNight: dailyForecast.Night.Icon,
             }))
         });
 }

@@ -11,11 +11,11 @@ class DailyForecast extends Component {
     }
 
     render() {
-        let width = (this.props.width || 800) + 'px';
-        let height = (this.props.height || 400) + 'px';
+        // let width = (this.props.width || 800) + 'px';
+        // let height = (this.props.height || 600) + 'px';
         return (
-            <div className="container container-fluid border border-secondary rounded" style={{ width, height}}>
-                <div className="row p-3">
+            <div className="container container-fluid border border-secondary rounded" style={{ minHeight: '100%'}}>
+                <div className="row m-0">
                     {
                         this.props.weatherData.map(forecastDay => {
                             return (
