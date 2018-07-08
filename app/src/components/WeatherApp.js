@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import DailyForecast from '../containers/DailyForecast';
+import SearchBar from '../containers/SearchBar';
 
 class WeatherApp extends Component {
 
     render() {
         return (
-            <div className="App">
+            <div id="outerWrapper">
+                <SearchBar />
                 <DailyForecast />
             </div>
         );

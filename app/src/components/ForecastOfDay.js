@@ -1,10 +1,36 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 
+import './style.css';
+
 class ForecastOfDay extends Component {
 
     getBackground = () => {
-
+        let maximumTemperature = this.props.forecast.MaximumTemperature;
+        if (maximumTemperature > 30) {
+            return 'rgb(255, 87, 0)';
+        }
+        if (maximumTemperature > 28) {
+            return 'rgb(255, 96, 0)';
+        }
+        if (maximumTemperature > 25) {
+            return 'rgb(255, 138, 0)';
+        }
+        if (maximumTemperature > 20) {
+            return 'rgb(0, 165, 255)';
+        }
+        if (maximumTemperature > 10) {
+            return 'rgb(0, 127, 255)';
+        }
+        if (maximumTemperature > 5) {
+            return 'rgb(0, 114, 255)';
+        }
+        if (maximumTemperature > 0) {
+            return 'rgb(0, 71, 214)';
+        }
+        if (maximumTemperature < 0) {
+            return 'rgb(1, 47, 173)';
+        }
     }
 
     render() {
@@ -18,27 +44,26 @@ class ForecastOfDay extends Component {
 
         let icon = (this.props.forecast.IconDay < 10) ? '0' + this.props.forecast.IconDay : this.props.forecast.IconDay;
         let imgSource = `https://developer.accuweather.com/sites/default/files/${icon}-s.png`
-        console.log(this.props.forecast);
 
         return (
-            <div >
-                <div className="row">
-                    <div className="col text-center">
-                        <div>
-                            <span className="d-block" style={{ fontSize: '5vw' }}>{dayOfWeek}</span>
-                            <span className="d-block" style={{ fontSize: '7vw', margin: '-15px 0px' }}>{dayOfMonth}</span>
-                            <span className="d-block" style={{ fontSize: '2.2vw' }}>{month}</span>
-                        </div>
-                        <div className="py-5">
-                            <img src={imgSource} alt={this.props.forecast.DescriptionDay}></img>
-                        </div>
-                        <div>
-                            <span className="d-block" style={{ fontSize: '2.2vw' }}>{max}ºC</span>
-                            <span className="d-block" style={{ fontSize: '2.2vw' }}>{min}ºC</span>
-                        </div>
+            <div className="text-center h-100" style={{ backgroundColor: this.getBackground(), color: 'white'}}>
+                <div className="row mx-0 h-100">
+                    <div className="col date my-auto">
+                        <span className="d-block dayOfWeek">{dayOfWeek}</span>
+                        <span className="d-block dayOfMonth">{dayOfMonth}</span>
+                        <span className="d-block month">{month}</span>
+                    </div>
+
+                    <div className="col forecastIcon my-auto">
+                        <img src={imgSource} alt={this.props.forecast.DescriptionDay}></img><br />
+                    </div>
+
+                    <div className="col temperature my-auto">
+                        <span className="d-block maximumTemperature">{max}ºC</span>
+                        <span className="d-block minimumTemperature">{min}ºC</span>
                     </div>
                 </div>
-            </div >
+            </div>
         );
     }
 

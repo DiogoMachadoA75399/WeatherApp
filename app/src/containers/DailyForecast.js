@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import './style.css';
 import { weatherFetchData } from '../actions';
 import ForecastOfDay from '../components/ForecastOfDay';
 
@@ -11,15 +12,13 @@ class DailyForecast extends Component {
     }
 
     render() {
-        // let width = (this.props.width || 800) + 'px';
-        // let height = (this.props.height || 600) + 'px';
         return (
-            <div className="container container-fluid border border-secondary rounded" style={{ minHeight: '100%'}}>
-                <div className="row m-0">
+            <div id="wrapper" className="container-fluid px-0">
+                <div id="dailyForecastList" className="row m-0">
                     {
                         this.props.weatherData.map(forecastDay => {
                             return (
-                                <div className="col-sm px-0" key={forecastDay.Date}>
+                                <div className="col-sm px-0 border" key={forecastDay.Date}>
                                     <ForecastOfDay forecast={forecastDay} />
                                 </div>
                             );

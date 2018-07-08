@@ -1,0 +1,13 @@
+#dailyForecastList {
+    height: 100%;
+    position: relative;
+}
+
+#searchBar {
+    position: relative;
+    z-index: 255;
+    border: none;
+    font-size: 25px;
+    width: 100%;
+    height: 50px;
+}
